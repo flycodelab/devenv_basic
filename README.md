@@ -97,4 +97,4 @@ map <C-n> :NERDTree<CR>
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 ```
 * Plugin 설치
-* * vim 실행 화면에서 `:PluginInstall`
+vim 실행 화면에서 `:PluginInstall`
