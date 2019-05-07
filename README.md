@@ -1,15 +1,21 @@
 # devenv_basic
 ## cygwin install
-* Download FTP URL: http://ftp.daum.net/cygwin
-* Necessary package: vim, curl, git, openssh, python3, python3-pip
+* 설치 파일 경로: https://www.cygwin.com/install.html
+* Choose A Download Site가 나오면 User URL에 http://ftp.daum.net/cygwin 입력
+* 필수 설치할 package: vim, curl, git, openssh, python3, python3-pip
 ## bash setting
-* uncomment alias settings in .bashrc
+* .bashrc 파일의 alias setting 주석 해제
+* python 관련 alias
+```
+alias python=python3
+alias pip=pip3
+```
 ## vim setting
-* Install Vundle
+* Vundle 설치
 ```
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
-* paste in .vimrc
+* .vimrc 기본 내용 채우기
 ```
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -58,4 +64,5 @@ let g:airline_theme='wombat'
 map <C-n> :NERDTree<CR>
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 ```
-* Install plugins
+* Plugin 설치
+vim 실행 화면에서 `:PluginInstall`
