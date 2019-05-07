@@ -37,7 +37,7 @@ alias la='ls -A'                              # all but . and ..
 alias l='ls -CF'                              #
 ```
 * python 관련 alias
-```
+```bash
 alias python=python3
 alias pip=pip3
 ```
@@ -97,4 +97,4 @@ map <C-n> :NERDTree<CR>
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 ```
 * Plugin 설치
-vim 실행 화면에서 `:PluginInstall`
+* * vim 실행 화면에서 `:PluginInstall`
