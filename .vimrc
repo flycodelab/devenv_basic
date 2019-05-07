@@ -44,3 +44,4 @@ set cursorline
 let g:airline_theme='wombat'
 
 map <C-n> :NERDTree<CR>
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
