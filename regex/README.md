@@ -18,6 +18,7 @@ Ben
                   Ben              
                                    
 ```
+---
 
 ```
 (TEXT)
@@ -64,6 +65,7 @@ sales3
        
        
 ```
+---
 
 ```
 (TEXT)
@@ -95,6 +97,7 @@ sales3
        
        
 ```
+---
 
 ```
 (TEXT)
@@ -124,6 +127,7 @@ na1
 na2    
 sa1    
 ```
+---
 
 ```
 (TEXT)
@@ -206,6 +210,20 @@ ca1.xls
 (SEARCH)
 [ns]a.\.xls
 ```
+```
+(RESULT)
+          
+          
+          
+          
+         
+           
+na1.xls
+na2.xls
+sa1.xls
+       
+```
+---
 
 ```
 (TEXT)
@@ -215,6 +233,11 @@ abbreviated as RegEx or regex.
 ```
 (SEARCH)
 [Rr]eg[Ee]x
+```
+```
+(RESULT)
+                                        
+               RegEx    regex 
 ```
 
 ### 문자 집합 범위 사용하기
@@ -237,6 +260,21 @@ ca1.xls
 (SEARCH)
 [ns]a[0123456789]\.xls
 ```
+```
+(RESULT)
+          
+          
+          
+          
+         
+           
+       
+na1.xls
+na2.xls
+sa1.xls
+       
+```
+---
 
 ```
 (TEXT)
@@ -256,6 +294,21 @@ ca1.xls
 (SEARCH)
 [ns]a[0-9]\.xls
 ```
+```
+(RESULT)
+          
+          
+          
+          
+         
+           
+       
+na1.xls
+na2.xls
+sa1.xls
+       
+```
+---
 
 ```
 (TEXT)
@@ -266,6 +319,12 @@ ca1.xls
 ```
 (SEARCH)
 #[0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f]
+```
+```
+(RESULT)
+               #336633        #FFFFFF 
+                                                    
+                     
 ```
 
 ### 제외하고 찾기
@@ -288,6 +347,20 @@ ca1.xls
 (SEARCH)
 [ns]a[^0-9]\.xls
 ```
+```
+(RESULT)
+          
+          
+          
+          
+         
+           
+sam.xls
+       
+       
+       
+       
+```
 
 ## 메타 문자 사용하기
 
@@ -305,6 +378,15 @@ if (myArray[0] == 0) {
 (SEARCH)
 myArray[0]
 ```
+```
+(RESULT)
+                          
+   
+                      
+ 
+   
+```
+---
 
 ```
 (TEXT)
@@ -318,6 +400,15 @@ if (myArray[0] == 0) {
 (SEARCH)
 myArray\[0\]
 ```
+```
+(RESULT)
+                          
+   
+    myArray[0]        
+ 
+   
+```
+---
 
 ```
 (TEXT)
@@ -326,6 +417,10 @@ myArray\[0\]
 ```
 (SEARCH)
 \\
+```
+```
+(RESULT)
+\    \   \     \
 ```
 
 ### 공백 문자 찾기
@@ -338,6 +433,7 @@ myArray\[0\]
 | `\r`   | 캐리지 리턴 |
 | `\t`   | 탭 |
 | `\v`   | 수직 탭 |
+---
 
 ```
 (TEXT)
@@ -351,6 +447,14 @@ myArray\[0\]
 (SEARCH)
 \r\n\r\n
 ```
+```
+(RESULT)
+                     
+                     
+
+                             
+                      
+```
 
 ### 특정한 문자 형태와 일치시키기
 
@@ -359,6 +463,7 @@ myArray\[0\]
 |-------|--------|
 | `\d` | 숫자 하나 ([0-9]와 같다) |
 | `\D` | 숫자를 제외한 문자 하나 ([^0-9]와 같다) |
+---
 
 ```
 (TEXT)
@@ -372,11 +477,21 @@ if (myArray[0] == 0) {
 (SEARCH)
 myArray\[\d\]
 ```
+```
+(RESULT)
+                          
+   
+    myArray[0]        
+ 
+   
+```
+---
 
 | 메타 문자 | 설명 |
 |-------|--------|
 | `\w` | 대소문자와 밑중릉 포함하는 모든 영숫자 ([a-zA-Z0-9_]와 같다) |
 | `\W` | 영숫자나, 밑줄이 아닌 모든 문자 ([^a-zA-Z0-9_]와 같다) |
+---
 
 ```
 (TEXT)
@@ -392,6 +507,17 @@ H1H2H2
 (SEARCH)
 \w\d\w\d\w\d
 ```
+```
+(RESULT)
+     
+A1C2E3
+     
+     
+M1B4F2
+     
+H1H2H2
+```
+---
 
 | 메타 문자 | 설명 |
 |-------|--------|
@@ -414,6 +540,7 @@ H1H2H2
 | `[:space:]`  | 빈칸을 포함한 모든 공백 문자 ([\f\n\r\t\v ]와 같다) |
 | `[:upper:]`  | 모든 대문자 ([A-Z]와 같다) |
 | `[:xdigit:]` | 모든 16진수 숫자 ([a-fA-F0-9]와 같다) |
+---
 
 ```
 (TEXT)
@@ -424,6 +551,13 @@ H1H2H2
 ```
 (SEARCH)
 #[[:xdigit:]][[:xdigit:]][[:xdigit:]][[:xdigit:]][[:xdigit:]][[:xdigit:]]
+```
+```
+(RESULT)
+      
+               #336633        #FFFFFF 
+                                                    
+                     
 ```
 
 ## 반복 찾기
@@ -441,6 +575,14 @@ nice if it were than simple, huh?).
 (SEARCH)
 \w+@\w+\.\w+
 ```
+```
+(RESULT)
+                       ben@forta.com               
+                 support@forta.com                   
+                     spam@forta.com                
+                                   
+```
+---
 
 ```
 (TEXT)
@@ -456,6 +598,17 @@ it were that simple, huh?)
 (SEARCH)
 \w+@\w+\.\w+
 ```
+```
+(RESULT)
+                       ben@forta.com   
+    forta@forta.com                       
+         support@forta.com                 
+              ben@urgent.forta          
+                                 
+spam@forta.com                        
+                          
+```
+---
 
 ```
 (TEXT)
@@ -471,6 +624,17 @@ it were that simple, huh?)
 (SEARCH)
 [\w.]+@[\w.]+\.\w+
 ```
+```
+(RESULT)
+                       ben@forta.com   
+ben.forta@forta.com                       
+         support@forta.com                 
+              ben@urgent.forta.com      
+                                 
+spam@forta.com                        
+                          
+```
+---
 
 ```
 (TEXT)
@@ -480,6 +644,11 @@ Hello .ben@forta.com is my email address.
 (SEARCH)
 [\w.]+@[\w.]+\.\w+
 ```
+```
+(RESULT)
+      .ben@forta.com                     
+```
+---
 
 ```
 (TEXT)
@@ -489,6 +658,11 @@ Hello .ben@forta.com is my email address.
 (SEARCH)
 \w+[\w.]+@[\w.]+\.\w+
 ```
+```
+(RESULT)
+       ben@forta.com                     
+```
+---
 
 ```
 (TEXT)
@@ -499,6 +673,12 @@ securely use https://www.forta.com/ instead.
 (SEARCH)
 http://[\w.\]+
 ```
+```
+(RESULT)
+           http://www.forta.com/            
+                                            
+```
+---
 
 ```
 (TEXT)
@@ -509,6 +689,12 @@ securely use https://www.forta.com/ instead.
 (SEARCH)
 https?://[\w.\]+
 ```
+```
+(RESULT)
+           http://www.forta.com/            
+             https://www.forta.com/         
+```
+---
 
 ```
 (TEXT)
@@ -521,6 +707,14 @@ https?://[\w.\]+
 ```
 (SEARCH)
 [\r]?\n[\r]?\n
+```
+```
+(RESULT)
+                     
+                     
+
+                             
+                      
 ```
 
 ### 구간 지정하기
@@ -535,6 +729,13 @@ https?://[\w.\]+
 (SEARCH)
 #[[:xdigit:]]{6}
 ```
+```
+(RESULT)
+               #336633        #FFFFFF 
+                                                    
+                     
+```
+---
 
 ```
 (TEXT)
@@ -547,6 +748,14 @@ https?://[\w.\]+
 (SEARCH)
 \d{1,2}[-\/]\d{1,2}[-\/]\d{2,4}
 ```
+```
+(RESULT)
+4/8/03
+10-6-2004
+     
+01-01-01
+```
+---
 
 ```
 (TEXT)
@@ -562,6 +771,16 @@ https?://[\w.\]+
 (SEARCH)
 \d+: \$\d{3,}\.\d{2}
 ```
+```
+(RESULT)
+1001: $496.80
+1002: $1290.69
+            
+1004: $613.42
+           
+1006: $414.90
+            
+```
 
 ### 과하게 일치하는 상황 방지하기
 
@@ -574,6 +793,12 @@ living in <B>AK</B> and <B>HI</B>.
 (SEARCH)
 <[Bb]>.*</[Bb]>
 ```
+```
+(RESULT)
+                                        
+          <B>AK</B> and <B>HI</B> 
+```
+---
 
 ```
 (TEXT)
@@ -584,7 +809,11 @@ living in <B>AK</B> and <B>HI</B>.
 (SEARCH)
 <[Bb]>.*?</[Bb]>
 <[Bb]>.\{-}<\/[Bb]>
-
+```
+```
+(RESULT)
+                                        
+          <B>AK</B>     <B>HI</B> 
 ```
 
 ## 위치 찾기
@@ -599,6 +828,10 @@ The cat scattered his food all over the room.
 (SEARCH)
 cat
 ```
+```
+(RESULT)
+    cat  cat                                 
+```
 
 ### 단어 경계 지정하기
 
@@ -611,6 +844,11 @@ The cat scattered his food all over the room.
 \bcat\b
 \<cat\>
 ```
+```
+(RESULT)
+    cat                                      
+```
+---
 
 ```
 (TEXT)
@@ -623,6 +861,13 @@ crew saved the men from a capsized vessel.
 \bcap
 \<cap
 ```
+```
+(RESULT)
+    cap               cap     cap            
+                                        
+                          cap             
+```
+---
 
 ```
 (TEXT)
@@ -635,6 +880,13 @@ crew saved the men from a capsized vessel.
 cap\b
 cap\>
 ```
+```
+(RESULT)
+                      cap                    
+                          cap           
+                                          
+```
+---
 
 ```
 (TEXT)
@@ -644,6 +896,11 @@ appears on your color - coded pass-key.
 ```
 (SEARCH)
 \B-\B
+```
+```
+(RESULT)
+                                    
+                      -                
 ```
 
 ### 문자열 경계 지정하기
@@ -659,6 +916,14 @@ xmlns:apachesoap="http://xml.apache.org/xml-soap"
 (SEARCH)
 <?xml.*\?>
 ```
+```
+(RESULT)
+<?xml version="1.0" encoding="UTF-8" ?>
+                                                  
+                                                       
+                                                 
+```
+---
 
 ```
 (TEXT)
@@ -672,6 +937,15 @@ xmlns:apachesoap="http://xml.apache.org/xml-soap"
 (SEARCH)
 <?xml.*\?>
 ```
+```
+(RESULT)
+                      
+<?xml version="1.0" encoding="UTF-8" ?>
+                                                  
+                                                       
+                                                 
+```
+---
 
 ```
 (TEXT)
@@ -684,11 +958,20 @@ xmlns:apachesoap="http://xml.apache.org/xml-soap"
 (SEARCH)
 ^\s*<?xml.*\?>
 ```
+```
+(RESULT)
+<?xml version="1.0" encoding="UTF-8" ?>
+                                                  
+                                                       
+                                                 
+```
+---
 
 ```
 (SEARCH)
 </[Hh][Tt][Mm][Ll]>\s*$
 ```
+---
 
 ```
 (TEXT)
@@ -711,6 +994,23 @@ function doSpellCheck (form, field) {
 (SEARCH)
 (?m)^\s*//.*$
 ```
+```
+(RESULT)
+        
+                                     
+  // Make sure not empty
+                          
+                 
+   
+  // Init
+                               
+                                                                       
+     
+  // Done
+               
+ 
+         
+```
 
 ## 하위 표현식 사용하기
 
@@ -726,6 +1026,12 @@ Windows&nbsp;&nbsp;2000, and other subjects.
 (SEARCH)
 &nbsp;{2,}
 ```
+```
+(RESULT)
+                                          
+                                           
+                                            
+```
 
 ### 하위 표현식으로 묶기
 
@@ -739,6 +1045,13 @@ Windows&nbsp;&nbsp;2000, and other subjects.
 (SEARCH)
 (&nbsp;){2,}
 ```
+```
+(RESULT)
+                                          
+                                           
+       &nbsp;&nbsp;                         
+```
+---
 
 ```
 (TEXT)
@@ -749,6 +1062,12 @@ with 32 bytes of data:
 (SEARCH)
 \d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}
 ```
+```
+(RESULT)
+                       12.159.46.200 
+                      
+```
+---
 
 ```
 (TEXT)
@@ -759,6 +1078,12 @@ with 32 bytes of data:
 (SEARCH)
 (\d{1,3}\.){3}\d{1,3}
 ```
+```
+(RESULT)
+                       12.159.46.200 
+                      
+```
+---
 
 ```
 (TEXT)
@@ -771,6 +1096,14 @@ Status: Active
 (SEARCH)
 19|20\d{2}
 ```
+```
+(RESULT)
+      
+      
+     19        
+              
+```
+---
 
 ```
 (TEXT)
@@ -784,6 +1117,13 @@ Status: Active
 (19|20)\d{2}
 \(19\|20\)\d\{2\}
 ```
+```
+(RESULT)
+      
+      
+     1967      
+              
+```
 
 ### 중첩된 하위 표현식
 
@@ -791,6 +1131,7 @@ Status: Active
 (SEARCH)
 (\d{1,3}\.){3}\d{1,3}
 ```
+---
 
 ```
 (TEXT)
@@ -800,6 +1141,11 @@ with 32 bytes of data:
 ```
 (SEARCH)
 (((\d{1,2})|(1\d{2})|(2[0-4]\d)|(25[0-5]))\.){3}((\d{1,2})|(1\d{2})|(2[0-4]\d)|(25[0-5]))
+```
+```
+(RESULT)
+                       12.159.46.200 
+                      
 ```
 
 ## 역참조 사용하기
@@ -821,6 +1167,18 @@ Information about Bluetooth, 802.11, and more.
 (SEARCH)
 <[hH]1>.*</[hH]1>
 ```
+```
+(RESULT)
+      
+<H1>Welcome to my Homepage</H1>
+                                         
+                   
+                                        
+                 
+                                              
+       
+```
+---
 
 ```
 (TEXT)
@@ -837,6 +1195,18 @@ Information about Bluetooth, 802.11, and more.
 (SEARCH)
 <[hH][1-6]>.*?</[hH][1-6]>
 ```
+```
+(RESULT)
+      
+<H1>Welcome to my Homepage</H1>
+                                         
+<H2>ColdFusion</H2>
+                                        
+<H2>Wireless</H2>
+                                              
+       
+```
+---
 
 ```
 (TEXT)
@@ -853,6 +1223,17 @@ Information about Bluetooth, 802.11, and more.
 (SEARCH)
 <[hH][1-6]>.*?</[hH][1-6]>
 ```
+```
+(RESULT)
+      
+<H1>Welcome to my Homepage</H1>
+                                         
+<H2>ColdFusion</H2>
+                                        
+<H2>Wireless</H3>
+                                              
+       
+```
 
 ### 역참조로 찾기
 
@@ -867,6 +1248,14 @@ should not be.
 (SEARCH)
 [ ]+(\w+)[ ]+\1
 ```
+```
+(RESULT)
+                of of      
+                   are are
+          and and     
+              
+```
+---
 
 ```
 (TEXT)
@@ -875,14 +1264,27 @@ should not be.
 Content is divided into two sections:<BR>
 <H2>ColdFusion</H2>
 Information about Macromedia ColdFusion.
-<H2>Wireless</H3>
+<H2>Wireless</H2>
 Information about Bluetooth, 802.11, and more.
+<H2>This is not valid HTML</H3>
 </BODY>
 ```
 ```
 (SEARCH)
 <[hH]([1-6])>.*?</[hH]\1>
 <[hH]\([1-6]\)>.*<\/[hH]\1>
+```
+```
+(RESULT)
+      
+<H1>Welcome to my Homepage</H1>
+                                         
+<H2>ColdFusion</H2>
+                                        
+<H2>Wireless</H2>
+                                              
+                               
+       
 ```
 
 ### 치환 작업 수행하기
@@ -895,6 +1297,11 @@ Hello, ben@forta.com is my email address.
 (SEARCH)
 \w+[\w\.]*@[\w\.]+\.\w+
 ```
+```
+(RESULT)
+       ben@forta.com                     
+```
+---
 
 ```
 (TEXT)
@@ -908,6 +1315,33 @@ Hello, ben@forta.com is my email address.
 (SUBSTITUTE)
 <A HREF="mailto:$1">$1</A>
 ```
+```
+(RESULT)
+Hello, <A HREF="mailto:ben@forta.com">ben@forta.com</A> is my email address.
+```
+---
+
+```
+(TEXT)
+313-555-1234
+248-555-9999
+810-555-9000
+```
+```
+(SEARCH)
+(\d{3})(-)(\d{3})(-)(\d{4})
+```
+```
+(SUBSTITUTE)
+($1) $3-$5
+```
+```
+(RESULT)
+(313) 555-1234
+(248) 555-9999
+(810) 555-9000
+```
+---
 
 | 메타 문자 | 설명 |
 |-------|--------|
@@ -916,6 +1350,7 @@ Hello, ben@forta.com is my email address.
 | `\L` | \E를 만날 때까지 모든 문자를 소문자로 변환한다. |
 | `\u` | 다음에 오는 글자를 대문자로 변환한다. |
 | `\U` | \E를 만날 때까지 모든 문자를 대문자로 변환한다. |
+---
 
 ```
 (TEXT)
@@ -926,6 +1361,7 @@ Content is divided into two sections:<BR>
 Information about Macromedia ColdFusion.
 <H2>Wireless</H3>
 Information about Bluetooth, 802.11, and more.
+<H2>This is not valid HTML</H3>
 </BODY>
 ```
 ```
@@ -935,6 +1371,18 @@ Information about Bluetooth, 802.11, and more.
 ```
 (SUBSTITUTE)
 $1\U$2\E$3
+```
+```
+(RESULT)
+      
+                               
+                                         
+                   
+                                        
+                 
+                                              
+                               
+       
 ```
 
 ## 전방탐색과 후방탐색
@@ -951,6 +1399,12 @@ $1\U$2\E$3
 (SEARCH)
 <[tT][iI][tT][lL][eE]>.*</[tT][iI][tT][lL][eE]>
 ```
+```
+(RESULT)
+      
+<TITLE>Ben Forta's Homepage</TITLE>
+       
+```
 
 ### 전방탐색 - 앞으로 찾기
 
@@ -964,6 +1418,13 @@ ftp://ftp.forta.com/
 (SEARCH)
 .+(?=:)
 ```
+```
+(RESULT)
+http                 
+https                  
+ftp                 
+```
+---
 
 ```
 (TEXT)
@@ -974,6 +1435,12 @@ ftp://ftp.forta.com/
 ```
 (SEARCH)
 .+(:)
+```
+```
+(RESULT)
+http:                
+https:                 
+ftp:                
 ```
 
 ### 후방탐색 - 뒤로 찾기
@@ -990,6 +1457,15 @@ Total items found: 4
 (SEARCH)
 \$[0-9\.]+
 ```
+```
+(RESULT)
+       $23.45
+       $5.31
+       $899.00
+       $69.96
+                    
+```
+---
 
 ```
 (TEXT)
@@ -1003,6 +1479,15 @@ Total items found: 4
 (SEARCH)
 [0-9\.]+
 ```
+```
+(RESULT)
+    1   23.45
+   42   5.31
+    1   899.00
+   99   69.96
+                   4
+```
+---
 
 ```
 (TEXT)
@@ -1015,6 +1500,14 @@ Total items found: 4
 ```
 (SEARCH)
 (?<=\$)[0-9\.]+
+```
+```
+(RESULT)
+        23.45
+        5.31
+        899.00
+        69.96
+                    
 ```
 
 ### 전방탐색과 후방탐색 함께 사용하기
@@ -1029,6 +1522,12 @@ Total items found: 4
 (SEARCH)
 (?<=<[tT][iI][tT][lL][eE]>).*(?=</[tT][iI][tT][lL][eE]>)
 ```
+```
+      
+      
+       Ben Forta's Homepage        
+       
+```
 
 ### 부정형 전후방탐색
 
@@ -1038,6 +1537,7 @@ Total items found: 4
 | `(?!)`  | 부정형 전방탐색 |
 | `(?<=)` | 긍정형 후방탐색 |
 | `(?<!)` | 부정형 후방탐색 |
+---
 
 
 ```
@@ -1050,6 +1550,13 @@ I saved $5 on this order.
 (SEARCH)
 (?<=\$)\d+
 ```
+```
+(RESULT)
+        30                
+                         
+         5               
+```
+---
 
 ```
 (TEXT)
@@ -1061,6 +1568,13 @@ I saved $5 on this order.
 (SEARCH)
 \b(?<!\$)\d+\b
 ```
+```
+(RESULT)
+               100        
+50              60       
+                         
+```
+---
 
 ```
 (TEXT)
@@ -1071,6 +1585,12 @@ I saved $5 on this order.
 ```
 (SEARCH)
 (?<!\$)\d+
+```
+```
+(RESULT)
+         0     100        
+50              60       
+                         
 ```
 
 ## 조건 달기
@@ -1090,6 +1610,15 @@ I saved $5 on this order.
 (SEARCH)
 \(?\d{3}\)?-?\d{3}-\d{4}
 ```
+```
+(RESULT)
+123-456-7890
+(123)456-7890
+(123)-456-7890
+(123-456-7890
+          
+            
+```
 
 ### 조건 사용하기
 
@@ -1102,11 +1631,24 @@ I saved $5 on this order.
 <A HREF="/search"><IMG SRC="/images/search.gif"></A>
 <IMG SRC="/images/spacer.gif">
 <A HREF="/help"><IMG SRC="/images/help.gif"></A>
+</TD>
 ```
 ```
 (SEARCH)
 (<[Aa]\s+[^>]+>\s*)?<[Ii][Mm][Gg]\s+[^>]+>(?(1)\s*<\[Aa]>)
 ```
+```
+(RESULT)
+                
+    
+<A HREF="/home"><IMG SRC="/images/home.gif"></A>
+<IMG SRC="/images/spacer.gif">
+<A HREF="/search"><IMG SRC="/images/search.gif"></A>
+<IMG SRC="/images/spacer.gif">
+<A HREF="/help"><IMG SRC="/images/help.gif"></A>
+     
+```
+---
 
 ```
 (TEXT)
@@ -1121,6 +1663,16 @@ I saved $5 on this order.
 (SEARCH)
 (\()?\d{3}(?(1)\)|-)\d{3}-\d{4}
 ```
+```
+(RESULT)
+123-456-7890
+(123)456-7890
+              
+             
+          
+            
+```
+---
 
 ```
 (TEXT)
@@ -1133,6 +1685,14 @@ I saved $5 on this order.
 (SEARCH)
 \d{5}(-\d{4})?
 ```
+```
+(RESULT)
+11111
+22222
+33333
+44444-4444
+```
+---
 
 ```
 (TEXT)
@@ -1144,4 +1704,11 @@ I saved $5 on this order.
 ```
 (SEARCH)
 \d{5}(?(?=-)-\d{4})
+```
+```
+(RESULT)
+11111
+22222
+      
+44444-4444
 ```
