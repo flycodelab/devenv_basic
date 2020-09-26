@@ -5,6 +5,7 @@
 ### 문자 그대로 찾기
 
 ```
+(TEXT)
 Hello, my name is Ben. Please visit
 my website at http://www.forta.com/
 ```
@@ -628,8 +629,119 @@ with 32 bytes of data:
 ## 역참조 사용하기
 
 ### 역참조 이해하기
+
+```
+<BODY>
+<H1>Welcome to my Homepage</H1>
+Content is divided into two sections:<BR>
+<H2>ColdFusion</H2>
+Information about Macromedia ColdFusion.
+<H2>Wireless</H2>
+Information about Bluetooth, 802.11, and more.
+</BODY>
+```
+```
+<[hH]1>.*</[hH]1>
+```
+
+```
+<BODY>
+<H1>Welcome to my Homepage</H1>
+Content is divided into two sections:<BR>
+<H2>ColdFusion</H2>
+Information about Macromedia ColdFusion.
+<H2>Wireless</H2>
+Information about Bluetooth, 802.11, and more.
+</BODY>
+```
+```
+<[hH][1-6]>.*?</[hH][1-6]>
+```
+
+```
+<BODY>
+<H1>Welcome to my Homepage</H1>
+Content is divided into two sections:<BR>
+<H2>ColdFusion</H2>
+Information about Macromedia ColdFusion.
+<H2>Wireless</H3>
+Information about Bluetooth, 802.11, and more.
+</BODY>
+```
+```
+<[hH][1-6]>.*?</[hH][1-6]>
+```
+
 ### 역참조로 찾기
+
+```
+This is a block of of text,
+several words here are are
+repeated, and and they
+should not be.
+```
+```
+[ ]+(\w+)[ ]+\1
+```
+
+```
+<BODY>
+<H1>Welcome to my Homepage</H1>
+Content is divided into two sections:<BR>
+<H2>ColdFusion</H2>
+Information about Macromedia ColdFusion.
+<H2>Wireless</H3>
+Information about Bluetooth, 802.11, and more.
+</BODY>
+```
+```
+<[hH]([1-6])>.*?</[hH]\1>
+<[hH]\([1-6]\)>.*<\/[hH]\1>
+```
+
 ### 치환 작업 수행하기
+
+```
+Hello, ben@forta.com is my email address.
+```
+```
+\w+[\w\.]*@[\w\.]+\.\w+
+```
+
+```
+Hello, ben@forta.com is my email address.
+```
+```
+\w+[\w\.]*@[\w\.]+\.\w+
+```
+```
+<A HREF="mailto:$1">$1</A>
+```
+
+| 메타 문자 | 설명 |
+|-------|--------|
+| `\E` | \L 혹은 \U 변환의 끝을 나타낸다. |
+| `\l` | 다음에 노는 글자를 소문자로 변환한다. |
+| `\L` | \E를 만날 때까지 모든 문자를 소문자로 변환한다. |
+| `\u` | 다음에 오는 글자를 대문자로 변환한다. |
+| `\U` | \E를 만날 때까지 모든 문자를 대문자로 변환한다. |
+
+```
+<BODY>
+<H1>Welcome to my Homepage</H1>
+Content is divided into two sections:<BR>
+<H2>ColdFusion</H2>
+Information about Macromedia ColdFusion.
+<H2>Wireless</H3>
+Information about Bluetooth, 802.11, and more.
+</BODY>
+```
+```
+(<[hH]1>)(.*?)(</[hH]1>)
+```
+```
+$1\U$2\E$3
+```
 
 ## 전방탐색과 후방탐색
 
