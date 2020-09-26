@@ -12,7 +12,26 @@ my website at http://www.forta.com/
 ```
 (SEARCH)
 Ben
+```
+```
+(RESULT)
+                  Ben              
+                                   
+```
+
+```
+(TEXT)
+Hello, my name is Ben. Please visit
+my website at http://www.forta.com/
+```
+```
+(SEARCH)
 my
+```
+```
+(RESULT)
+       my                          
+my                                 
 ```
 
 ### 모든 문자 찾기
@@ -33,6 +52,18 @@ sa1.xls
 (SEARCH)
 sales.
 ```
+```
+(RESULT)
+sales1    
+          
+sales2    
+sales3    
+         
+           
+       
+       
+       
+```
 
 ```
 (TEXT)
@@ -51,6 +82,19 @@ sa1.xls
 (SEARCH)
 sales.
 ```
+```
+(RESULT)
+sales.   
+sales1    
+          
+sales2    
+sales3    
+         
+           
+       
+       
+       
+```
 
 ```
 (TEXT)
@@ -68,6 +112,18 @@ sa1.xls
 (SEARCH)
 .a.
 ```
+```
+(RESULT)
+sal       
+          
+sal       
+sal       
+ pac     
+           
+na1    
+na2    
+sa1    
+```
 
 ```
 (TEXT)
@@ -84,6 +140,18 @@ sa1.xls
 ```
 (SEARCH)
 .a..
+```
+```
+(RESULT)
+sale      
+          
+sale      
+sale      
+ pac1    
+           
+na1.   
+na2.   
+sa1.   
 ```
 
 ### 특수 문자 찾기
@@ -104,11 +172,22 @@ sa1.xls
 (SEARCH)
 .a.\.xls
 ```
+```
+(RESULT)
+          
+          
+          
+          
+         
+           
+na1.xls
+na2.xls
+sa1.xls
+```
 
 ## 문자 집합으로 찾기
 
 ### 여러 문자 중 하나와 일치시키기
-
 
 ```
 (TEXT)
