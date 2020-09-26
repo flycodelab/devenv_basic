@@ -10,6 +10,7 @@ Hello, my name is Ben. Please visit
 my website at http://www.forta.com/
 ```
 ```
+(SEARCH)
 Ben
 my
 ```
@@ -17,6 +18,7 @@ my
 ### 모든 문자 찾기
 
 ```
+(TEXT)
 sales1.xls
 order3.xls
 sales2.xls
@@ -28,10 +30,12 @@ na2.xls
 sa1.xls
 ```
 ```
+(SEARCH)
 sales.
 ```
 
 ```
+(TEXT)
 sales.xls
 sales1.xls
 order3.xls
@@ -44,10 +48,12 @@ na2.xls
 sa1.xls
 ```
 ```
+(SEARCH)
 sales.
 ```
 
 ```
+(TEXT)
 sales1.xls
 order3.xls
 sales2.xls
@@ -59,10 +65,12 @@ na2.xls
 sa1.xls
 ```
 ```
+(SEARCH)
 .a.
 ```
 
 ```
+(TEXT)
 sales1.xls
 order3.xls
 sales2.xls
@@ -74,12 +82,14 @@ na2.xls
 sa1.xls
 ```
 ```
+(SEARCH)
 .a..
 ```
 
 ### 특수 문자 찾기
 
 ```
+(TEXT)
 sales1.xls
 order3.xls
 sales2.xls
@@ -91,6 +101,7 @@ na2.xls
 sa1.xls
 ```
 ```
+(SEARCH)
 .a.\.xls
 ```
 
@@ -100,6 +111,7 @@ sa1.xls
 
 
 ```
+(TEXT)
 sales1.xls
 order3.xls
 sales2.xls
@@ -112,20 +124,24 @@ sa1.xls
 ca1.xls
 ```
 ```
+(SEARCH)
 [ns]a.\.xls
 ```
 
 ```
+(TEXT)
 The phrase "regular expression" is often
 abbreviated as RegEx or regex.
 ```
 ```
+(SEARCH)
 [Rr]eg[Ee]x
 ```
 
 ### 문자 집합 범위 사용하기
 
 ```
+(TEXT)
 sales1.xls
 order3.xls
 sales2.xls
@@ -139,10 +155,12 @@ sa1.xls
 ca1.xls
 ```
 ```
+(SEARCH)
 [ns]a[0123456789]\.xls
 ```
 
 ```
+(TEXT)
 sales1.xls
 order3.xls
 sales2.xls
@@ -156,21 +174,25 @@ sa1.xls
 ca1.xls
 ```
 ```
+(SEARCH)
 [ns]a[0-9]\.xls
 ```
 
 ```
+(TEXT)
 <BODY BGCOLOR="#336633" TEXT="#FFFFFF"
       MARGINWIDTH="0" MARGINHEIGHT="0" TOPMARGIN="0"
       LEFTMARGIN="0">
 ```
 ```
+(SEARCH)
 #[0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f]
 ```
 
 ### 제외하고 찾기
 
 ```
+(TEXT)
 sales1.xls
 order3.xls
 sales2.xls
@@ -184,6 +206,7 @@ sa1.xls
 ca1.xls
 ```
 ```
+(SEARCH)
 [ns]a[^0-9]\.xls
 ```
 
@@ -192,6 +215,7 @@ ca1.xls
 ### 이스케이프 다시 살펴보기
 
 ```
+(TEXT)
 var myArray = new Array();
 ...
 if (myArray[0] == 0) {
@@ -199,10 +223,12 @@ if (myArray[0] == 0) {
 ...
 ```
 ```
+(SEARCH)
 myArray[0]
 ```
 
 ```
+(TEXT)
 var myArray = new Array();
 ...
 if (myArray[0] == 0) {
@@ -210,13 +236,16 @@ if (myArray[0] == 0) {
 ...
 ```
 ```
+(SEARCH)
 myArray\[0\]
 ```
 
 ```
+(TEXT)
 \home\ben\sales\
 ```
 ```
+(SEARCH)
 \\
 ```
 
@@ -232,6 +261,7 @@ myArray\[0\]
 | `\v`   | 수직 탭 |
 
 ```
+(TEXT)
 "101", "Ben", "Forta"
 "102", "Jim", "James"
 
@@ -239,6 +269,7 @@ myArray\[0\]
 "104", "Bob", "Bobson"
 ```
 ```
+(SEARCH)
 \r\n\r\n
 ```
 
@@ -251,6 +282,7 @@ myArray\[0\]
 | `\D` | 숫자를 제외한 문자 하나 ([^0-9]와 같다) |
 
 ```
+(TEXT)
 var myArray = new Array();
 ...
 if (myArray[0] == 0) {
@@ -258,6 +290,7 @@ if (myArray[0] == 0) {
 ...
 ```
 ```
+(SEARCH)
 myArray\[\d\]
 ```
 
@@ -267,6 +300,7 @@ myArray\[\d\]
 | `\W` | 영숫자나, 밑줄이 아닌 모든 문자 ([^a-zA-Z0-9_]와 같다) |
 
 ```
+(TEXT)
 11213
 A1C2E3
 48075
@@ -276,6 +310,7 @@ M1B4F2
 H1H2H2
 ```
 ```
+(SEARCH)
 \w\d\w\d\w\d
 ```
 
@@ -302,11 +337,13 @@ H1H2H2
 | `[:xdigit:]` | 모든 16진수 숫자 ([a-fA-F0-9]와 같다) |
 
 ```
+(TEXT)
 <BODY BGCOLOR="#336633" TEXT="#FFFFFF"
       MARGINWIDTH="0" MARGINHEIGHT="0" TOPMARGIN="0"
       LEFTMARGIN="0">
 ```
 ```
+(SEARCH)
 #[[:xdigit:]][[:xdigit:]][[:xdigit:]][[:xdigit:]][[:xdigit:]][[:xdigit:]]
 ```
 
@@ -315,16 +352,19 @@ H1H2H2
 ### 몇 번 일치하는가?
 
 ```
+(TEXT)
 Send personal email to ben@forta.com. For questions
 about a book use support@forta.com. Feel free to send
 unsolicited email to spam@forta.com (wouldn't it be
 nice if it were than simple, huh?).
 ```
 ```
+(SEARCH)
 \w+@\w+\.\w+
 ```
 
 ```
+(TEXT)
 Send personal email to ben@forta.com or
 ben.forta@forta.com. For questions about a
 book use support@forta.com. If your message
@@ -334,10 +374,12 @@ spam@forta.com (wouldn't it be nice if
 it were that simple, huh?)
 ```
 ```
+(SEARCH)
 \w+@\w+\.\w+
 ```
 
 ```
+(TEXT)
 Send personal email to ben@forta.com or
 ben.forta@forta.com. For questions about a
 book use support@forta.com. If your message
@@ -347,40 +389,50 @@ spam@forta.com (wouldn't it be nice if
 it were that simple, huh?)
 ```
 ```
+(SEARCH)
 [\w.]+@[\w.]+\.\w+
 ```
 
 ```
+(TEXT)
 Hello .ben@forta.com is my email address.
 ```
 ```
+(SEARCH)
 [\w.]+@[\w.]+\.\w+
 ```
 
 ```
+(TEXT)
 Hello .ben@forta.com is my email address.
 ```
 ```
+(SEARCH)
 \w+[\w.]+@[\w.]+\.\w+
 ```
 
 ```
+(TEXT)
 The URL is http://www.forta.com/, to connect
 securely use https://www.forta.com/ instead.
 ```
 ```
+(SEARCH)
 http://[\w.\]+
 ```
 
 ```
+(TEXT)
 The URL is http://www.forta.com/, to connect
 securely use https://www.forta.com/ instead.
 ```
 ```
+(SEARCH)
 https?://[\w.\]+
 ```
 
 ```
+(TEXT)
 "101", "Ben", "Forta"
 "102", "Jim", "James"
 
@@ -388,31 +440,37 @@ https?://[\w.\]+
 "104", "Bob", "Bobson"
 ```
 ```
+(SEARCH)
 [\r]?\n[\r]?\n
 ```
 
 ### 구간 지정하기
 
 ```
+(TEXT)
 <BODY BGCOLOR="#336633" TEXT="#FFFFFF"
       MARGINWIDTH="0" MARGINHEIGHT="0" TOPMARGIN="0"
       LEFTMARGIN="0">
 ```
 ```
+(SEARCH)
 #[[:xdigit:]]{6}
 ```
 
 ```
+(TEXT)
 4/8/03
 10-6-2004
 2/2/2
 01-01-01
 ```
 ```
+(SEARCH)
 \d{1,2}[-\/]\d{1,2}[-\/]\d{2,4}
 ```
 
 ```
+(TEXT)
 1001: $496.80
 1002: $1290.69
 1003: $26.43
@@ -422,24 +480,29 @@ https?://[\w.\]+
 1007: $25.00
 ```
 ```
+(SEARCH)
 \d+: \$\d{3,}\.\d{2}
 ```
 
 ### 과하게 일치하는 상황 방지하기
 
 ```
+(TEXT)
 This offer is not available to customers
 living in <B>AK</B> and <B>HI</B>.
 ```
 ```
+(SEARCH)
 <[Bb]>.*</[Bb]>
 ```
 
 ```
+(TEXT)
 This offer is not available to customers
 living in <B>AK</B> and <B>HI</B>.
 ```
 ```
+(SEARCH)
 <[Bb]>.*?</[Bb]>
 <[Bb]>.\{-}<\/[Bb]>
 
@@ -450,63 +513,76 @@ living in <B>AK</B> and <B>HI</B>.
 ### 경계 지정하기
 
 ```
+(TEXT)
 The cat scattered his food all over the room.
 ```
 ```
+(SEARCH)
 cat
 ```
 
 ### 단어 경계 지정하기
 
 ```
+(TEXT)
 The cat scattered his food all over the room.
 ```
 ```
+(SEARCH)
 \bcat\b
 \<cat\>
 ```
 
 ```
+(TEXT)
 The captain wore this cap and cape proudly as
 he sat listening to the recap of how his
 crew saved the men from a capsized vessel.
 ```
 ```
+(SEARCH)
 \bcap
 \<cap
 ```
 
 ```
+(TEXT)
 The captain wore this cap and cape proudly as
 he sat listening to the recap of how his
 crew saved the men from a capsized vessel.
 ```
 ```
+(SEARCH)
 cap\b
 cap\>
 ```
 
 ```
+(TEXT)
 Please enter the nine-digit id as it
 appears on your color - coded pass-key.
 ```
 ```
+(SEARCH)
 \B-\B
 ```
 
 ### 문자열 경계 지정하기
 
 ```
+(TEXT)
 <?xml version="1.0" encoding="UTF-8" ?>
 <wsdl:definitions targetNamespace="http://tips.cf"
 xmlns:impl="http://tips.cf" xmlns:intf="http://tips.cf"
 xmlns:apachesoap="http://xml.apache.org/xml-soap"
 ```
 ```
+(SEARCH)
 <?xml.*\?>
 ```
 
 ```
+(TEXT)
 This is bad, real bad!
 <?xml version="1.0" encoding="UTF-8" ?>
 <wsdl:definitions targetNamespace="http://tips.cf"
@@ -514,24 +590,29 @@ xmlns:impl="http://tips.cf" xmlns:intf="http://tips.cf"
 xmlns:apachesoap="http://xml.apache.org/xml-soap"
 ```
 ```
+(SEARCH)
 <?xml.*\?>
 ```
 
 ```
+(TEXT)
 <?xml version="1.0" encoding="UTF-8" ?>
 <wsdl:definitions targetNamespace="http://tips.cf"
 xmlns:impl="http://tips.cf" xmlns:intf="http://tips.cf"
 xmlns:apachesoap="http://xml.apache.org/xml-soap"
 ```
 ```
+(SEARCH)
 ^\s*<?xml.*\?>
 ```
 
 ```
+(SEARCH)
 </[Hh][Tt][Mm][Ll]>\s*$
 ```
 
 ```
+(TEXT)
 <SCRIPT>
 function doSpellCheck (form, field) {
   // Make sure not empty
@@ -548,6 +629,7 @@ function doSpellCheck (form, field) {
 </SCRIPT>
 ```
 ```
+(SEARCH)
 (?m)^\s*//.*$
 ```
 
@@ -556,58 +638,70 @@ function doSpellCheck (form, field) {
 ### 하위 표현식 이해하기
 
 ```
+(TEXT)
 Hello, my name is Ben&nbsp;Forta, and I am
 the tutor of books on SQL, ColdFusion, WAP,
 Windows&nbsp;&nbsp;2000, and other subjects.
 ```
 ```
+(SEARCH)
 &nbsp;{2,}
 ```
 
 ### 하위 표현식으로 묶기
 
 ```
+(TEXT)
 Hello, my name is Ben&nbsp;Forta, and I am
 the tutor of books on SQL, ColdFusion, WAP,
 Windows&nbsp;&nbsp;2000, and other subjects.
 ```
 ```
+(SEARCH)
 (&nbsp;){2,}
 ```
 
 ```
+(TEXT)
 Pinging hog.forta.com [12.159.46.200]
 with 32 bytes of data:
 ```
 ```
+(SEARCH)
 \d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}
 ```
 
 ```
+(TEXT)
 Pinging hog.forta.com [12.159.46.200]
 with 32 bytes of data:
 ```
 ```
+(SEARCH)
 (\d{1,3}\.){3}\d{1,3}
 ```
 
 ```
+(TEXT)
 ID:042
 SEX: M
 DOB: 1967-08-17
 Status: Active
 ```
 ```
+(SEARCH)
 19|20\d{2}
 ```
 
 ```
+(TEXT)
 ID:042
 SEX: M
 DOB: 1967-08-17
 Status: Active
 ```
 ```
+(SEARCH)
 (19|20)\d{2}
 \(19\|20\)\d\{2\}
 ```
@@ -615,14 +709,17 @@ Status: Active
 ### 중첩된 하위 표현식
 
 ```
+(SEARCH)
 (\d{1,3}\.){3}\d{1,3}
 ```
 
 ```
+(TEXT)
 Pinging hog.forta.com [12.159.46.200]
 with 32 bytes of data:
 ```
 ```
+(SEARCH)
 (((\d{1,2})|(1\d{2})|(2[0-4]\d)|(25[0-5]))\.){3}((\d{1,2})|(1\d{2})|(2[0-4]\d)|(25[0-5]))
 ```
 
@@ -631,6 +728,7 @@ with 32 bytes of data:
 ### 역참조 이해하기
 
 ```
+(TEXT)
 <BODY>
 <H1>Welcome to my Homepage</H1>
 Content is divided into two sections:<BR>
@@ -641,10 +739,12 @@ Information about Bluetooth, 802.11, and more.
 </BODY>
 ```
 ```
+(SEARCH)
 <[hH]1>.*</[hH]1>
 ```
 
 ```
+(TEXT)
 <BODY>
 <H1>Welcome to my Homepage</H1>
 Content is divided into two sections:<BR>
@@ -655,10 +755,12 @@ Information about Bluetooth, 802.11, and more.
 </BODY>
 ```
 ```
+(SEARCH)
 <[hH][1-6]>.*?</[hH][1-6]>
 ```
 
 ```
+(TEXT)
 <BODY>
 <H1>Welcome to my Homepage</H1>
 Content is divided into two sections:<BR>
@@ -669,22 +771,26 @@ Information about Bluetooth, 802.11, and more.
 </BODY>
 ```
 ```
+(SEARCH)
 <[hH][1-6]>.*?</[hH][1-6]>
 ```
 
 ### 역참조로 찾기
 
 ```
+(TEXT)
 This is a block of of text,
 several words here are are
 repeated, and and they
 should not be.
 ```
 ```
+(SEARCH)
 [ ]+(\w+)[ ]+\1
 ```
 
 ```
+(TEXT)
 <BODY>
 <H1>Welcome to my Homepage</H1>
 Content is divided into two sections:<BR>
@@ -695,6 +801,7 @@ Information about Bluetooth, 802.11, and more.
 </BODY>
 ```
 ```
+(SEARCH)
 <[hH]([1-6])>.*?</[hH]\1>
 <[hH]\([1-6]\)>.*<\/[hH]\1>
 ```
@@ -702,19 +809,24 @@ Information about Bluetooth, 802.11, and more.
 ### 치환 작업 수행하기
 
 ```
+(TEXT)
 Hello, ben@forta.com is my email address.
 ```
 ```
+(SEARCH)
 \w+[\w\.]*@[\w\.]+\.\w+
 ```
 
 ```
+(TEXT)
 Hello, ben@forta.com is my email address.
 ```
 ```
+(SEARCH)
 \w+[\w\.]*@[\w\.]+\.\w+
 ```
 ```
+(SUBSTITUTE)
 <A HREF="mailto:$1">$1</A>
 ```
 
@@ -727,6 +839,7 @@ Hello, ben@forta.com is my email address.
 | `\U` | \E를 만날 때까지 모든 문자를 대문자로 변환한다. |
 
 ```
+(TEXT)
 <BODY>
 <H1>Welcome to my Homepage</H1>
 Content is divided into two sections:<BR>
@@ -737,9 +850,11 @@ Information about Bluetooth, 802.11, and more.
 </BODY>
 ```
 ```
+(SEARCH)
 (<[hH]1>)(.*?)(</[hH]1>)
 ```
 ```
+(SUBSTITUTE)
 $1\U$2\E$3
 ```
 
