@@ -861,12 +861,208 @@ $1\U$2\E$3
 ## 전방탐색과 후방탐색
 
 ### 전후방탐색 살펴보기
+
+```
+(TEXT)
+<HEAD>
+<TITLE>Ben Forta's Homepage</TITLE>
+</HEAD>
+```
+```
+(SEARCH)
+<[tT][iI][tT][lL][eE]>.*</[tT][iI][tT][lL][eE]>
+```
+
 ### 전방탐색 - 앞으로 찾기
+
+```
+(TEXT)
+http://www.forta.com/
+https://mail.forta.com/
+ftp://ftp.forta.com/
+```
+```
+(SEARCH)
+.+(?=:)
+```
+
+```
+(TEXT)
+http://www.forta.com/
+https://mail.forta.com/
+ftp://ftp.forta.com/
+```
+```
+(SEARCH)
+.+(:)
+```
+
 ### 후방탐색 - 뒤로 찾기
+
+```
+(TEXT)
+ABC01: $23.45
+HGG42: $5.31
+CFMX1: $899.00
+XTC99: $69.96
+Total items found: 4
+```
+```
+(SEARCH)
+\$[0-9\.]+
+```
+
+```
+(TEXT)
+ABC01: $23.45
+HGG42: $5.31
+CFMX1: $899.00
+XTC99: $69.96
+Total items found: 4
+```
+```
+(SEARCH)
+[0-9\.]+
+```
+
+```
+(TEXT)
+ABC01: $23.45
+HGG42: $5.31
+CFMX1: $899.00
+XTC99: $69.96
+Total items found: 4
+```
+```
+(SEARCH)
+(?<=\$)[0-9\.]+
+```
+
 ### 전방탐색과 후방탐색 함께 사용하기
+
+```
+(TEXT)
+<HEAD>
+<TITLE>Ben Forta's Homepage</TITLE>
+</HEAD>
+```
+```
+(SEARCH)
+(?<=<[tT][iI][tT][lL][eE]>).*(?=</[tT][iI][tT][lL][eE]>)
+```
+
 ### 부정형 전후방탐색
+
+| 종류 | 설명 |
+|-------|--------|
+| `(?=)`  | 긍정형 전방탐색 |
+| `(?!)`  | 부정형 전방탐색 |
+| `(?<=)` | 긍정형 후방탐색 |
+| `(?<!)` | 부정형 후방탐색 |
+
+
+```
+(TEXT)
+I paid $30 for 100 apples,
+50 oranges, and 60 pears.
+I saved $5 on this order.
+```
+```
+(SEARCH)
+(?<=\$)\d+
+```
+
+```
+(TEXT)
+I paid $30 for 100 apples,
+50 oranges, and 60 pears.
+I saved $5 on this order.
+```
+```
+(SEARCH)
+\b(?<!\$)\d+\b
+```
+
+```
+(TEXT)
+I paid $30 for 100 apples,
+50 oranges, and 60 pears.
+I saved $5 on this order.
+```
+```
+(SEARCH)
+(?<!\$)\d+
+```
 
 ## 조건 달기
 
 ### 왜 조건을 다는가
+
+```
+(TEXT)
+123-456-7890
+(123)456-7890
+(123)-456-7890
+(123-456-7890
+1234567890
+123 456 7890
+```
+```
+(SEARCH)
+\(?\d{3}\)?-?\d{3}-\d{4}
+```
+
 ### 조건 사용하기
+
+```
+(TEXT)
+<!-- Nav bar -->
+<TD>
+<A HREF="/home"><IMG SRC="/images/home.gif"></A>
+<IMG SRC="/images/spacer.gif">
+<A HREF="/search"><IMG SRC="/images/search.gif"></A>
+<IMG SRC="/images/spacer.gif">
+<A HREF="/help"><IMG SRC="/images/help.gif"></A>
+```
+```
+(SEARCH)
+(<[Aa]\s+[^>]+>\s*)?<[Ii][Mm][Gg]\s+[^>]+>(?(1)\s*<\[Aa]>)
+```
+
+```
+(TEXT)
+123-456-7890
+(123)456-7890
+(123)-456-7890
+(123-456-7890
+1234567890
+123 456 7890
+```
+```
+(SEARCH)
+(\()?\d{3}(?(1)\)|-)\d{3}-\d{4}
+```
+
+```
+(TEXT)
+11111
+22222
+33333-
+44444-4444
+```
+```
+(SEARCH)
+\d{5}(-\d{4})?
+```
+
+```
+(TEXT)
+11111
+22222
+33333-
+44444-4444
+```
+```
+(SEARCH)
+\d{5}(?(?=-)-\d{4})
+```
