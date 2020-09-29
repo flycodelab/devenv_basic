@@ -14,7 +14,6 @@ Plugin 'The-NERD-tree'
 Plugin 'ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'mattn/emmet-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -31,6 +30,8 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+set encoding=utf-8
+
 set number
 
 set softtabstop=4
@@ -43,5 +44,38 @@ set cursorline
 
 let g:airline_theme='wombat'
 
-map <C-n> :NERDTree<CR>
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+map <C-n> :NERDTreeToggle<CR>
+
+set scrolloff=0
+
+function MyTabLabel(n)
+  let buflist = tabpagebuflist(a:n)
+  let winnr = tabpagewinnr(a:n)
+  let label = bufname(buflist[winnr - 1])
+  return ' (' . a:n . ') ' . fnamemodify(label, ":t")
+endfunction
+function MyTabLine()
+  let s  = tabpagenr() . '/' . tabpagenr('$')
+  for i in range(tabpagenr('$'))
+    " select the highlighting
+    if i + 1 == tabpagenr()
+      let s .= '%#TabLineSel#'
+    else
+      let s .= '%#TabLine#'
+    endif
+
+    " set the tab page number (for mouse clicks)
+    " let s .= '%' . (i + 1) . 'T'
+
+    " the label is made by MyTabLabel()
+    let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
+  endfor
+  " after the last tab fill with TabLineFill and reset tab page nr
+  let s .= '%#TabLineFill#%T'
+  return s
+endfunction
+set tabline=%!MyTabLine()
+highlight TabLineSel ctermfg=red
+"highlight TabLine ctermfg=gray
+"highlight TabLineSel ctermfg=white
+
