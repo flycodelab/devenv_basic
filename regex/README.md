@@ -574,6 +574,7 @@ nice if it were than simple, huh?).
 ```
 (SEARCH)
 \w+@\w+\.\w+
+\w\+@\w\+\.\w\+
 ```
 ```
 (RESULT)
@@ -597,6 +598,7 @@ it were that simple, huh?)
 ```
 (SEARCH)
 \w+@\w+\.\w+
+\w\+@\w\+\.\w\+
 ```
 ```
 (RESULT)
@@ -623,6 +625,7 @@ it were that simple, huh?)
 ```
 (SEARCH)
 [\w.]+@[\w.]+\.\w+
+/[[:alnum:].]\+@[[:alnum:].]\+\.\w\+
 ```
 ```
 (RESULT)
@@ -634,6 +637,7 @@ ben.forta@forta.com
 spam@forta.com                        
                           
 ```
+Inside a collection, you have to use special character classes. [Vim regex with metacharacters inside bracket - Stack Overflow](https://stackoverflow.com/questions/7341322/vim-regex-with-metacharacters-inside-bracket)
 ---
 
 ```
@@ -643,6 +647,7 @@ Hello .ben@forta.com is my email address.
 ```
 (SEARCH)
 [\w.]+@[\w.]+\.\w+
+/[[:alnum:].]\+@[[:alnum:].]\+\.\w\+
 ```
 ```
 (RESULT)
@@ -657,6 +662,7 @@ Hello .ben@forta.com is my email address.
 ```
 (SEARCH)
 \w+[\w.]+@[\w.]+\.\w+
+/\w\+[[:alnum:].]\+@[[:alnum:].]\+\.\w\+
 ```
 ```
 (RESULT)
@@ -671,7 +677,8 @@ securely use https://www.forta.com/ instead.
 ```
 ```
 (SEARCH)
-http://[\w.\]+
+http://[\w./]+
+http:\/\/[[:alnum:]./]\+
 ```
 ```
 (RESULT)
@@ -688,6 +695,7 @@ securely use https://www.forta.com/ instead.
 ```
 (SEARCH)
 https?://[\w.\]+
+https\?:\/\/[[:alnum:]./]\+
 ```
 ```
 (RESULT)
@@ -728,6 +736,7 @@ https?://[\w.\]+
 ```
 (SEARCH)
 #[[:xdigit:]]{6}
+#[[:xdigit:]]\{6\}
 ```
 ```
 (RESULT)
@@ -747,6 +756,7 @@ https?://[\w.\]+
 ```
 (SEARCH)
 \d{1,2}[-\/]\d{1,2}[-\/]\d{2,4}
+\d\{1,2\}[-/]\d\{1,2\}[-/]\d\{2,4\}
 ```
 ```
 (RESULT)
@@ -770,6 +780,7 @@ https?://[\w.\]+
 ```
 (SEARCH)
 \d+: \$\d{3,}\.\d{2}
+\d\+: \$\d\{3,\}\.\d\{2\}
 ```
 ```
 (RESULT)
@@ -792,6 +803,7 @@ living in <B>AK</B> and <B>HI</B>.
 ```
 (SEARCH)
 <[Bb]>.*</[Bb]>
+<[Bb]>.*<\/[Bb]>
 ```
 ```
 (RESULT)
