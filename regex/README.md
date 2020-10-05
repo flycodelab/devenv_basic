@@ -638,8 +638,7 @@ spam@forta.com
                           
 ```
 
-Inside a collection, you have to use special character classes. [Vim regex with metacharacters inside bracket - Stack Overflow](https://stackoverflow.com/questions/7341322/vim-regex-with-metacharacters-inside-bracket)
-
+([Vim regex with metacharacters inside bracket - Stack Overflow](https://stackoverflow.com/questions/7341322/vim-regex-with-metacharacters-inside-bracket)) Inside a collection, you have to use special character classes. 
 ---
 
 ```
